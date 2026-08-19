@@ -1,4 +1,4 @@
-package om.imene.taskmanager;
+package com.imene.taskmanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
