@@ -1,5 +1,6 @@
 package com.imene.taskmanager.task;
 
+import com.imene.taskmanager.task.dto.CreateTaskRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,7 +18,11 @@ public class TaskService {
         return taskRepository.findAll();
     }
 
-    public Task create(Task task) {
+    public Task create(CreateTaskRequest request) {
+        Task task = new Task(
+                request.title(),
+                request.description());
+
         return taskRepository.save(task);
     }
 }
