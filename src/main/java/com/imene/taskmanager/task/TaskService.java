@@ -26,9 +26,13 @@ public class TaskService {
     public Task create(CreateTaskRequest request) {
         Task task = new Task(
                 request.title(),
-                request.description()
-        );
+                request.description());
 
         return taskRepository.save(task);
+    }
+
+    public void delete(Long id) {
+        Task task = findById(id);
+        taskRepository.delete(task);
     }
 }
