@@ -1,6 +1,7 @@
 package com.imene.taskmanager.task;
 
 import com.imene.taskmanager.task.dto.CreateTaskRequest;
+import com.imene.taskmanager.task.dto.UpdateTaskRequest;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -26,7 +27,18 @@ public class TaskService {
     public Task create(CreateTaskRequest request) {
         Task task = new Task(
                 request.title(),
-                request.description());
+                request.description()
+        );
+
+        return taskRepository.save(task);
+    }
+
+    public Task update(Long id, UpdateTaskRequest request) {
+        Task task = findById(id);
+
+        task.setTitle(request.title());
+        task.setDescription(request.description());
+        task.setStatus(request.status());
 
         return taskRepository.save(task);
     }
